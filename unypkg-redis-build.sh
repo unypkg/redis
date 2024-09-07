@@ -80,7 +80,7 @@ unset LD_RUN_PATH
 export CFLAGS=""
 export CXXFLAGS="${CFLAGS}"
 
-make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" BUILD_TLS=yes -j"$(nproc)"
+make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" USE_SYSTEMD=yes BUILD_TLS=yes -j"$(nproc)"
 make -j"$(nproc)" test
 make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" -j"$(nproc)" install
 
