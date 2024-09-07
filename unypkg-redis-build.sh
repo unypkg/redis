@@ -80,7 +80,7 @@ unset LD_RUN_PATH
 export CFLAGS=""
 export CXXFLAGS="${CFLAGS}"
 
-make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" USE_SYSTEMD=yes BUILD_TLS=yes -j"$(nproc)"
+make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" USE_SYSTEMD=yes MALLOC=jemalloc BUILD_TLS=yes -j"$(nproc)"
 make -j"$(nproc)" test
 make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" -j"$(nproc)" install
 
@@ -90,6 +90,7 @@ sed "s|/usr/local|/uny/pkg/"$pkgname"/"$pkgver"|g" -i /uny/pkg/"$pkgname"/"$pkgv
 
 mkdir /uny/pkg/"$pkgname"/"$pkgver"/etc
 cp -a redis.conf /uny/pkg/"$pkgname"/"$pkgver"/etc/
+sed "s|# supervised auto|supervised auto|" -i /uny/pkg/"$pkgname"/"$pkgver"/etc/redis.conf
 
 ####################################################
 ### End of individual build script
