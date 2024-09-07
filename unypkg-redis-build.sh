@@ -81,7 +81,7 @@ export CFLAGS=""
 export CXXFLAGS="${CFLAGS}"
 
 make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" BUILD_TLS=yes -j"$(nproc)"
-
+make -j"$(nproc)" test
 make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" -j"$(nproc)" install
 
 cp -a utils /uny/pkg/"$pkgname"/"$pkgver"
