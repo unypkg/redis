@@ -84,6 +84,13 @@ make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" BUILD_TLS=yes -j"$(nproc)"
 
 make PREFIX=/uny/pkg/"$pkgname"/"$pkgver" -j"$(nproc)" install
 
+cp -a utils /uny/pkg/"$pkgname"/"$pkgver"
+sed "s|/usr/local|/uny/pkg/"$pkgname"/"$pkgver"|g" -i /uny/pkg/"$pkgname"/"$pkgver"/utils/systemd-redis_server.service
+sed "s|/usr/local|/uny/pkg/"$pkgname"/"$pkgver"|g" -i /uny/pkg/"$pkgname"/"$pkgver"/utils/systemd-redis_multiple_servers@.service
+
+mkdir /uny/pkg/"$pkgname"/"$pkgver"/etc
+cp -a redis.conf /uny/pkg/"$pkgname"/"$pkgver"/etc/
+
 ####################################################
 ### End of individual build script
 
