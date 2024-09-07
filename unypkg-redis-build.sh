@@ -91,6 +91,7 @@ sed "s|/usr/local|/uny/pkg/"$pkgname"/"$pkgver"|g" -i /uny/pkg/"$pkgname"/"$pkgv
 mkdir /uny/pkg/"$pkgname"/"$pkgver"/etc
 cp -a redis.conf /uny/pkg/"$pkgname"/"$pkgver"/etc/
 sed "s|# supervised auto|supervised auto|" -i /uny/pkg/"$pkgname"/"$pkgver"/etc/redis.conf
+sed "s|dir ./|dir /var/lib/redis|" -i /uny/pkg/"$pkgname"/"$pkgver"/etc/redis.conf
 
 ####################################################
 ### End of individual build script
